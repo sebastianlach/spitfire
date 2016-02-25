@@ -3,6 +3,16 @@
 - hosts: all
 
   tasks:
-  - name: "Test connection"
+
+  - name: Test connection
     ping:
+
+  - name: Print inventory hostname
+    debug: msg="System running at {{ inventory_hostname }}"
+
+  - name: Display all variables/facts known for a host
+    debug: var=hostvars[inventory_hostname]
+
+  - name: Print uptime
+    shell: /usr/bin/uptime
 
