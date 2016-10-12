@@ -15,8 +15,7 @@ ENV LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
 ENV ANSIBLE_FORCE_COLOR=true
 
 RUN pacman -Sq --noconfirm --noprogressbar python2 ansible git
-RUN echo -e "localhost\tansible_connection=local" > /etc/ansible/hosts
-RUN ln -s /usr/bin/python2 /usr/bin/python
+RUN echo -e "localhost\tansible_connection=local ansible_python_interpreter=/usr/bin/python2" > /etc/ansible/hosts
 
 # ansible on build
 ONBUILD ADD . /etc/ansible
