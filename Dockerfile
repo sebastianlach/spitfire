@@ -19,5 +19,5 @@ RUN echo -e "localhost\tansible_connection=local ansible_python_interpreter=/usr
 
 # ansible on build
 ONBUILD ADD . /etc/ansible
+ONBUILD RUN /usr/bin/ansible-galaxy install -r /etc/ansible/requirements/*.yml
 ONBUILD RUN /usr/bin/ansible-playbook /etc/ansible/*.yml
-
